@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportPlace</title>
+    <link rel="stylesheet" href="bauka.css">
+</head>
+<body>
+
+<header>
+    <h1>SportPlace</h1>
+
+    <nav>
+        <button onclick="showSection('home')">Басты бет</button>
+        <button onclick="showSection('sports')">Спорт түрлері</button>
+        <button onclick="showSection('places')">Орындар</button>
+        <button onclick="showSection('booking')">Брондау</button>
+        <button onclick="login()">Кіру</button>
+    </nav>
+</header>
+
+<main>
+
+    <section id="home" class="section active">
+        <h2>SportPlace-қа қош келдіңіз!</h2>
+        <p>Өзіңізге ұнайтын спорт алаңын оңай тауып, брондаңыз.</p>
+        <button class="main-btn" onclick="showSection('sports')">
+            Спортты таңдау
+        </button>
+    </section>
+
+    <section id="sports" class="section">
+        <h2>Спорт түрлері</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>⚽ Футбол</h3>
+                <button onclick="selectSport('Футбол')">Таңдау</button>
+            </div>
+
+            <div class="card">
+                <h3>🏀 Баскетбол</h3>
+                <button onclick="selectSport('Баскетбол')">Таңдау</button>
+            </div>
+
+            <div class="card">
+                <h3>🎾 Теннис</h3>
+                <button onclick="selectSport('Теннис')">Таңдау</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="places" class="section">
+        <h2>Спорт орындары</h2>
+
+        <div class="card">
+            <h3>Sport Arena</h3>
+            <p>Алматы қаласы</p>
+            <button onclick="bookPlace('Sport Arena')">Брондау</button>
+        </div>
+
+        <div class="card">
+            <h3>City Sport</h3>
+            <p>Алматы қаласы</p>
+            <button onclick="bookPlace('City Sport')">Брондау</button>
+        </div>
+    </section>
+
+    <section id="booking" class="section">
+        <h2>Брондау</h2>
+
+        <p id="selectedSport">Спорт түрі таңдалмаған</p>
+
+        <input type="text" id="name" placeholder="Атыңыз">
+        <input type="date" id="date">
+
+        <button class="main-btn" onclick="confirmBooking()">
+            Брондау
+        </button>
+
+        <p id="result"></p>
+    </section>
+
+</main>
+
+<script src="bauka.js"></script>
+
+</body>
+</html>
