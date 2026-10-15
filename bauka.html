@@ -3,88 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportPlace</title>
+    <title>SportPlace — Спорт әлемі</title>
     <link rel="stylesheet" href="bauka.css">
 </head>
 <body>
 
-<header>
-    <h1>SportPlace</h1>
+<header class="header">
+    <a href="#" class="logo">🏆 Sport<span>Place</span></a>
 
     <nav>
-        <button onclick="showSection('home')">Басты бет</button>
-        <button onclick="showSection('sports')">Спорт түрлері</button>
-        <button onclick="showSection('places')">Орындар</button>
-        <button onclick="showSection('booking')">Брондау</button>
-        <button onclick="login()">Кіру</button>
+        <a href="#home">Басты бет</a>
+        <a href="#sports">Спорт түрлері</a>
+        <a href="#places">Алаңдар</a>
     </nav>
+
+    <button class="login-btn" id="loginBtn">Кіру</button>
 </header>
 
-<main>
+<section class="hero" id="home">
+    <div class="hero-content">
+        <p class="tag">⚡ СПОРТҚА БІР ҚАДАМ ЖАҚЫН</p>
+        <h1>Өзіңе лайық<br>спорт алаңын <span>тап!</span></h1>
+        <p>Спорт алаңдарын ізде, таңда және достарыңмен бірге ойна.</p>
+        <a href="#places" class="main-btn">Алаңдарды көру →</a>
+    </div>
+</section>
 
-    <section id="home" class="section active">
-        <h2>SportPlace-қа қош келдіңіз!</h2>
-        <p>Өзіңізге ұнайтын спорт алаңын оңай тауып, брондаңыз.</p>
-        <button class="main-btn" onclick="showSection('sports')">
-            Спортты таңдау
-        </button>
-    </section>
-
-    <section id="sports" class="section">
+<section class="section" id="sports">
+    <div class="section-heading">
+        <p class="tag">БАҒЫТЫҢДЫ ТАҢДА</p>
         <h2>Спорт түрлері</h2>
+        <p>Өзіңе ұнайтын спортты таңда</p>
+    </div>
 
-        <div class="cards">
-            <div class="card">
-                <h3>⚽ Футбол</h3>
-                <button onclick="selectSport('Футбол')">Таңдау</button>
-            </div>
-
-            <div class="card">
-                <h3>🏀 Баскетбол</h3>
-                <button onclick="selectSport('Баскетбол')">Таңдау</button>
-            </div>
-
-            <div class="card">
-                <h3>🎾 Теннис</h3>
-                <button onclick="selectSport('Теннис')">Таңдау</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="places" class="section">
-        <h2>Спорт орындары</h2>
-
-        <div class="card">
-            <h3>Sport Arena</h3>
-            <p>Алматы қаласы</p>
-            <button onclick="bookPlace('Sport Arena')">Брондау</button>
-        </div>
-
-        <div class="card">
-            <h3>City Sport</h3>
-            <p>Алматы қаласы</p>
-            <button onclick="bookPlace('City Sport')">Брондау</button>
-        </div>
-    </section>
-
-    <section id="booking" class="section">
-        <h2>Брондау</h2>
-
-        <p id="selectedSport">Спорт түрі таңдалмаған</p>
-
-        <input type="text" id="name" placeholder="Атыңыз">
-        <input type="date" id="date">
-
-        <button class="main-btn" onclick="confirmBooking()">
-            Брондау
+    <div class="sports-grid">
+        <button class="sport-card" data-sport="Футбол">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=700&q=80" alt="Футбол">
+            <span>⚽ Футбол</span>
         </button>
 
-        <p id="result"></p>
-    </section>
+        <button class="sport-card" data-sport="Баскетбол">
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=700&q=80" alt="Баскетбол">
+            <span>🏀 Баскетбол</span>
+        </button>
 
-</main>
+        <button class="sport-card" data-sport="Теннис">
+            <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=700&q=80" alt="Теннис">
+            <span>🎾 Теннис</span>
+        </button>
+
+        <button class="sport-card" data-sport="Волейбол">
+            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=700&q=80" alt="Волейбол">
+            <span>🏐 Волейбол</span>
+        </button>
+    </div>
+</section>
+
+<section class="section places-section" id="places">
+    <div class="section-heading">
+        <p class="tag">ӨЗІҢЕ ҚОЛАЙЛЫСЫН ТАП</p>
+        <h2>Танымал алаңдар</h2>
+        <p>Спорт алаңын таңда да, бронда</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput"
+               placeholder="Алаң немесе спорт түрін іздеу...">
+
+        <select id="sportFilter">
+            <option value="Барлығы">Барлық спорт</option>
+            <option value="Футбол">Футбол</option>
+            <option value="Баскетбол">Баскетбол</option>
+            <option value="Теннис">Теннис</option>
+            <option value="Волейбол">Волейбол</option>
+        </select>
+
+        <button id="searchBtn" class="main-btn">Іздеу</button>
+    </div>
+
+    <div class="places-grid" id="placesGrid">
+
+        <article class="place-card" data-sport="Футбол">
+            <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80" alt="Футбол алаңы">
+            <div class="place-info">
+                <span class="category">⚽ Футбол</span>
+                <h3>Football Arena</h3>
+                <p>📍 Алматы қаласы</p>
+                <div class="place-bottom">
+                    <strong>10 000 ₸ <small>/ сағат</small></strong>
+                    <button class="book-btn" data-place="Football Arena">Брондау</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="place-card" data-sport="Баскетбол">
+            <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=800&q=80" alt="Баскетбол алаңы">
+            <div class="place-info">
+                <span class="category">🏀 Баскетбол</span>
+                <h3>Basketball Zone</h3>
+                <p>📍 Алматы қаласы</p>
+                <div class="place-bottom">
+                    <strong>6 000 ₸ <small>/ сағат</small></strong>
+                    <button class="book-btn" data-place="Basketball Zone">Брондау</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="place-card" data-sport="Теннис">
+            <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=800&q=80" alt="Теннис алаңы">
+            <div class="place-info">
+                <span class="category">🎾 Теннис</span>
+                <h3>Tennis Club</h3>
+                <p>📍 Алматы қаласы</p>
+                <div class="place-bottom">
+                    <strong>8 000 ₸ <small>/ сағат</small></strong>
+                    <button class="book-btn" data-place="Tennis Club">Брондау</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="place-card" data-sport="Волейбол">
+            <img src="https://images.unsplash.com/photo-1592656094267-764a45160876?auto=format&fit=crop&w=800&q=80" alt="Волейбол алаңы">
+            <div class="place-info">
+                <span class="category">🏐 Волейбол</span>
+                <h3>Volley Arena</h3>
+                <p>📍 Алматы қаласы</p>
+                <div class="place-bottom">
+                    <strong>5 000 ₸ <small>/ сағат</small></strong>
+                    <button class="book-btn" data-place="Volley Arena">Брондау</button>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <p id="noResults" class="no-results" hidden>Алаң табылмады. Басқа атауды іздеп көр.</p>
+</section>
+
+<section class="cta">
+    <h2>Спортты бірге бастайық!</h2>
+    <p>Өзіңе ұнайтын алаңды таңда және белсенді өмір салтын баста.</p>
+    <button class="main-btn" id="ctaBtn">Қазір бастау →</button>
+</section>
+
+<footer>
+    <a href="#home" class="logo">🏆 Sport<span>Place</span></a>
+    <p>© 2026 SportPlace. Оқу жобасы.</p>
+</footer>
+
+<!-- Кіру терезесі -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <button class="close-btn" data-close="loginModal">×</button>
+        <h2 id="loginTitle">Қош келдің!</h2>
+        <p>SportPlace жүйесіне кір</p>
+
+        <form id="loginForm">
+            <label for="userName">Атың</label>
+            <input id="userName" type="text" placeholder="Атыңды енгіз" required>
+
+            <label for="userEmail">Электрондық пошта</label>
+            <input id="userEmail" type="email" placeholder="example@mail.com" required>
+
+            <label for="userPassword">Құпиясөз</label>
+            <input id="userPassword" type="password" placeholder="Кемінде 4 таңба" minlength="4" required>
+
+            <button class="main-btn full-btn" type="submit">Кіру</button>
+        </form>
+
+        <p id="loginMessage" class="message"></p>
+        <button id="logoutBtn" class="logout-btn" hidden>Шығу</button>
+    </div>
+</div>
+
+<!-- Брондау терезесі -->
+<div class="modal" id="bookingModal">
+    <div class="modal-content">
+        <button class="close-btn" data-close="bookingModal">×</button>
+        <h2>Алаңды брондау</h2>
+        <p id="selectedPlace"></p>
+
+        <form id="bookingForm">
+            <label for="bookingDate">Күні</label>
+            <input id="bookingDate" type="date" required>
+
+            <label for="bookingTime">Уақыты</label>
+            <select id="bookingTime" required>
+                <option value="">Уақытты таңда</option>
+                <option>09:00</option>
+                <option>11:00</option>
+                <option>13:00</option>
+                <option>15:00</option>
+                <option>17:00</option>
+                <option>19:00</option>
+                <option>21:00</option>
+            </select>
+
+            <button class="main-btn full-btn" type="submit">Брондауды растау</button>
+        </form>
+        <p id="bookingMessage" class="message"></p>
+    </div>
+</div>
 
 <script src="bauka.js"></script>
-
 </body>
 </html>

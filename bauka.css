@@ -4,103 +4,532 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    color: #222;
+    background: #f5f7fa;
+    color: #20252d;
+    line-height: 1.6;
 }
 
-header {
-    background: #801616;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+button, input, select {
+    font: inherit;
 }
 
-header h1 {
-    font-size: 28px;
-}
-
-nav {
-    display: flex;
-    gap: 10px;
+button, a {
+    -webkit-tap-highlight-color: transparent;
 }
 
 button {
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
     cursor: pointer;
-    background: white;
-    color: #16803c;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header {
+    background: #171c26;
+    color: white;
+    min-height: 76px;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #ff6048;
+}
+
+.header nav {
+    display: flex;
+    gap: 28px;
+}
+
+.header nav a {
+    color: #e1e5ed;
+    transition: color 0.2s;
+}
+
+.header nav a:hover {
+    color: #ff6048;
+}
+
+.login-btn {
+    padding: 10px 24px;
+    border: 1px solid #ff6048;
+    border-radius: 8px;
+    color: white;
+    background: #ff6048;
     font-weight: bold;
+    transition: 0.2s;
 }
 
-button:hover {
-    background: #dff5e7;
+.login-btn:hover, .book-btn:hover {
+    background: #e74a33;
 }
 
-main {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
+.hero {
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    padding: 70px 8%;
+    color: white;
+    background:
+        linear-gradient(90deg, rgba(15,20,29,.95), rgba(15,20,29,.55)),
+        url("https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
 }
 
-.section {
-    display: none;
-    background: white;
-    padding: 35px;
-    border-radius: 15px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+.hero-content {
+    max-width: 650px;
 }
 
-.section.active {
-    display: block;
+.tag {
+    color: #ff6048;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
 }
 
-.section h2 {
-    margin-bottom: 15px;
+.hero h1 {
+    font-size: clamp(38px, 5.5vw, 65px);
+    line-height: 1.13;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #ff6048;
+}
+
+.hero-content > p:not(.tag) {
+    color: #e0e4eb;
+    font-size: 17px;
+    margin-bottom: 30px;
 }
 
 .main-btn {
-    background: #16803c;
+    display: inline-block;
+    border: none;
+    background: #ff6048;
     color: white;
-    margin-top: 20px;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
 }
 
-.cards {
+.main-btn:hover {
+    background: #e74a33;
+    transform: translateY(-2px);
+}
+
+.section {
+    padding: 75px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2, .cta h2 {
+    font-size: clamp(27px, 4vw, 38px);
+    margin-bottom: 8px;
+}
+
+.section-heading > p:last-child {
+    color: #747b87;
+}
+
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.sport-card {
+    position: relative;
+    height: 230px;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #20252d;
+    box-shadow: 0 5px 18px #18203312;
+    text-align: left;
+    transition: transform 0.25s;
+}
+
+.sport-card:hover {
+    transform: translateY(-6px);
+}
+
+.sport-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.sport-card:hover img {
+    transform: scale(1.06);
+}
+
+.sport-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 35%, rgba(0,0,0,.8));
+}
+
+.sport-card span {
+    position: absolute;
+    z-index: 1;
+    bottom: 18px;
+    left: 18px;
+    color: white;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.places-section {
+    background: #edf0f5;
+}
+
+.search-box {
     display: flex;
-    gap: 20px;
-    margin-top: 25px;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto 35px;
 }
 
-.card {
-    background: #f1f5f3;
-    padding: 25px;
-    border-radius: 12px;
-    margin-top: 15px;
+.search-box input, .search-box select {
+    min-width: 0;
+    background: white;
+    border: 1px solid #dce0e7;
+    border-radius: 8px;
+    padding: 13px;
+    outline: none;
+}
+
+.search-box input {
     flex: 1;
 }
 
-.card button {
-    margin-top: 15px;
-    background: #708016;
+.search-box select {
+    width: 190px;
+}
+
+.search-box input:focus, .search-box select:focus,
+.modal-content input:focus, .modal-content select:focus {
+    border-color: #ff6048;
+    box-shadow: 0 0 0 3px #ff604820;
+}
+
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.place-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #1820330c;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.place-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px #18203316;
+}
+
+.place-card > img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.place-info {
+    padding: 18px;
+}
+
+.category {
+    color: #e74a33;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.place-info h3 {
+    margin: 7px 0;
+    font-size: 19px;
+}
+
+.place-info > p {
+    font-size: 14px;
+    color: #777f8d;
+    margin-bottom: 17px;
+}
+
+.place-bottom {
+    border-top: 1px solid #edf0f4;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.place-bottom strong {
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.place-bottom small {
+    font-size: 11px;
+    color: #7a8290;
+    font-weight: normal;
+}
+
+.book-btn {
+    border: none;
+    border-radius: 7px;
+    padding: 9px 12px;
+    background: #ff6048;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.no-results {
+    text-align: center;
+    padding: 30px;
+    color: #6d7480;
+}
+
+.cta {
+    text-align: center;
+    background: #171c26;
+    color: white;
+    padding: 65px 20px;
+}
+
+.cta p {
+    color: #c8ced8;
+    margin: 12px 0 25px;
+}
+
+footer {
+    padding: 28px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    background: #11151d;
+    color: #c8ced8;
+}
+
+footer .logo {
     color: white;
 }
 
-input {
-    display: block;
-    width: 100%;
-    max-width: 400px;
-    padding: 12px;
-    margin: 12px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+footer p {
+    font-size: 13px;
 }
 
-#result {
-    margin-top: 20px;
+/* Кіру және брондау терезелері */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(8,12,20,.75);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    overflow-y: auto;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    margin: auto;
+    box-shadow: 0 20px 70px #0003;
+}
+
+.modal-content h2 {
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.modal-content > p {
+    color: #777f8d;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: none;
+    color: #606775;
+    font-size: 32px;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #ff6048;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content label {
+    font-size: 14px;
     font-weight: bold;
+}
+
+.modal-content input, .modal-content select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dce0e7;
+    border-radius: 8px;
+    outline: none;
+    background: white;
+    margin-bottom: 5px;
+}
+
+.full-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #218653;
+    overflow-wrap: anywhere;
+}
+
+.logout-btn {
+    margin-top: 10px;
+    padding: 9px 15px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background: white;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 1050px) {
+    .sports-grid, .places-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .header {
+        padding: 15px 4%;
+    }
+
+    .section {
+        padding: 60px 5%;
+    }
+}
+
+@media (max-width: 650px) {
+    .header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .header nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+        font-size: 13px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .hero {
+        min-height: 450px;
+        padding: 55px 7%;
+    }
+
+    .hero-content > p:not(.tag) {
+        font-size: 15px;
+    }
+
+    .sports-grid, .places-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sport-card {
+        height: 210px;
+    }
+
+    .place-card > img {
+        height: 210px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box select {
+        width: 100%;
+    }
+
+    .search-box .main-btn {
+        width: 100%;
+    }
+
+    .section {
+        padding: 48px 6%;
+    }
+
+    .modal-content {
+        padding: 25px 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
 }
